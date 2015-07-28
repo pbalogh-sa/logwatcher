@@ -1,0 +1,2 @@
+# logwatcher
+wachdog for logfiles
