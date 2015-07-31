@@ -97,7 +97,7 @@ class terrier():
                 else:
                     return False
             else:
-                return false
+                return False
         else:
             return False
 
