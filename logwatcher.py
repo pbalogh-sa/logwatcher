@@ -42,7 +42,7 @@ class terrier():
     def __del__(self):
         if not self.stdin and self.fexist:
             self.file.close()
-
+test
     def run(self):
         if self.stdin:
             self.findpattern_from_stdin()
