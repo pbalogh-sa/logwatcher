@@ -15,7 +15,9 @@ import re
 
 childpid = 0
 
+
 class terrier():
+
     def __init__(self, opts):
         self.fexist = False
         self.alert = opts.ALERT
@@ -35,14 +37,14 @@ class terrier():
                 print 'File Not Found: %s' % self.filename
                 sys.exit(1)
         self.pattern = opts.PATTERN
-        self.que = deque(maxlen = self.line)
+        self.que = deque(maxlen=self.line)
 
     def __del__(self):
-        if self.stdin == False and self.fexist:
+        if not self.stdin and self.fexist:
             self.file.close()
 
     def run(self):
-        if self.stdin == True:
+        if self.stdin:
             self.findpattern_from_stdin()
         else:
             self.findpattern_from_file()
@@ -85,7 +87,7 @@ class terrier():
                 self.print_to_stdout()
 
     def print_to_stdout(self):
-        print  '%s on %s: %s' % (self.alert, time.strftime('%Y-%m-%d'), list(self.que))
+        print '%s on %s: %s' % (self.alert, time.strftime('%Y-%m-%d'), list(self.que))
 
     def check_file(self):
         if os.path.isfile(self.filename):
@@ -101,25 +103,26 @@ class terrier():
         else:
             return False
 
+
 class debugger():
+
     def __init__(self, opts):
         self.opts = opts
 
     def dprint(self):
         print self.opts
 
+
 def signal_handler(signal, frame):
     os.kill(childpid, 3)
     sys.exit(0)
+
 
 def filename_handler(filename):
     if filename.find('{') >= 0:
         tmp1 = filename.split('{')
         tmp2 = tmp1[1].split('}')
         datestr = tmp2[0].split('-')
-        if tmp2[0] != 'YYYY-MM-DD':
-                print 'Date Format error in filename. Use YYYY-MM-DD!\n'
-                sys.exit(-1)
         for i in range(0, 3):
             if datestr[i] == 'YYYY' or datestr[i] == 'MM' or datestr[i] == 'DD':
                 pass
@@ -138,6 +141,7 @@ def filename_handler(filename):
         filename = filename
     return filename
 
+
 def main():
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
@@ -152,11 +156,11 @@ def main():
     if opts.ALERT == 'stdout':
         opts.STDOUT = True
     else:
-        if opts.ALERT == 'logi' or opts.ALERT == 'loge' or opts.ALERT == 'loga':
+        if opts.ALERT == 'info' or opts.ALERT == 'error' or opts.ALERT == 'alert':
             pass
         else:
             parser.print_help()
-            print 'Valid alert type missing: [logi, loge, loga]'
+            print 'Valid alert type missing: [info, error, alert]'
             sys.exit(-1)
 
     mandatories = ['PATTERN']
