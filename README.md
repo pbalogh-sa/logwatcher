@@ -1,5 +1,7 @@
 # Logwatcher
 
+[![Build Status](https://travis-ci.org/pbalogh-sa/logwatcher.svg)](https://travis-ci.org/pbalogh-sa/logwatcher)
+
 __Create info, error, alert message when a defined regexp found on logfile.__
 
 ### Prerequirements:
