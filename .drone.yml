@@ -1,0 +1,5 @@
+pipeline:
+  build:
+    image: python
+    commands:
+      - pip install tailer
