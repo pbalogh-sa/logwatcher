@@ -7,6 +7,6 @@ pipeline:
   clair:
     image: poke/drone-clair:latest
     url: http://linuxsysadmin.hu:6060
-    username: $$DOCKER_USERNAME
-    password: $$DOCKER_PASSWORD
+    username: poke
     scan_image: python
+    secrets: [ docker_password ]
