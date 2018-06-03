@@ -5,7 +5,7 @@ pipeline:
       - pip install tailer
 
   clair:
-    image: poke/drone-clair
+    image: poke/drone-clair:latest
     url: http://linuxsysadmin.hu:8080
     username: ${DOCKER_USERNAME}
     password: ${DOCKER_PASSWORD}
