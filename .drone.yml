@@ -8,5 +8,5 @@ pipeline:
     image: poke/drone-clair:latest
     url: http://linuxsysadmin.hu:6060
     username: $$DOCKER_USERNAME
-    password: $$$DOCKER_PASSWORD
+    password: $$DOCKER_PASSWORD
     scan_image: python
