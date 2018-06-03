@@ -7,8 +7,4 @@ pipeline:
   clair:
     image: jmccann/drone-clair:1
     url: http://linuxsysadmin.hu:8080
-    username: $${DOCKER_USERNAME}
-    password: $${DOCKER_PASSWORD}
-    command:
-      - echo $${DOCKER_USERNAME}
     scan_image: python:2.7
