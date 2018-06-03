@@ -9,4 +9,4 @@ pipeline:
     url: http://linuxsysadmin.hu:6060
     username: poke
     password: toratta
-    scan_image: python:2.7
+    scan_image: python
