@@ -4,7 +4,7 @@ pipeline:
     commands:
       - pip install tailer
 
-  clair:
+  test_poke:
     image: poke/drone-clair:latest
     url: http://linuxsysadmin.hu:6060
     username: poke
